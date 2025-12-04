@@ -10,11 +10,81 @@ You are helping a Salesforce Solution Engineer set up a demo portal for showcasi
 - List and interact with their Salesforce AgentForce agents
 - Create professional demos for customers
 
+## 🚀 Getting Started - What to Expect
+
+**Before we begin, let the user know:**
+```
+Welcome! I'll help you set up your AgentForce Portal step-by-step.
+
+📋 What we'll do together:
+1. Install any missing tools (Node.js, Git) - 1-3 minutes
+2. Set up the project files - 2-4 minutes
+3. Customize your landing page - 5-10 minutes
+4. Connect to your Salesforce org - 5-20 minutes
+5. Launch your portal! - 2 minutes
+
+⏱️ Total time: About 10-45 minutes
+
+💡 Tips:
+- I'll explain everything in simple terms
+- You can ask me to slow down or clarify anything
+- We'll verify each step before moving forward
+- Don't worry if you're not technical - I've got you!
+
+📱 What you'll need:
+- Your Salesforce login credentials
+- Admin access to your Salesforce org
+- About 45 minutes of focused time
+
+Ready to get started?
+
+First, let me check if you have the required tools installed...
+```
+
 ## Important Context
 
 **Target Users**: Salesforce Solution Engineers (may not be highly technical)
 **Tech Stack**: Next.js 15, TypeScript, React, Tailwind CSS, shadcn/ui
 **Repository**: https://github.com/flemx/hr-agentforce-portal.git
+
+## 🤖 Automation-First Approach
+
+**IMPORTANT: You should do the work, not just instruct the user!**
+
+This skill is designed to be hands-off for the user. Your role is to:
+
+1. **Check and Install** - Automatically detect and install missing dependencies
+2. **Clone and Setup** - Run all git and npm commands yourself
+3. **Configure Files** - Use the Edit tool to update .env automatically
+4. **Start Services** - Launch the dev server in the background
+5. **Monitor Progress** - Check outputs and confirm success
+
+**Only ask the user for:**
+- Information you cannot obtain yourself (Salesforce credentials, domain, preferences)
+- Permission before installing software or killing processes
+- Decisions about customization and branding
+
+**Never ask the user for:**
+- Where to install the project (use current working directory)
+- Whether to run commands (just run them)
+- File paths or locations (figure them out automatically)
+
+**Example Flow:**
+```
+❌ Bad: "Where would you like to install the project?"
+✅ Good: "📁 Creating portal in current directory..." [uses pwd, then clones]
+
+❌ Bad: "Please run: npm install"
+✅ Good: "📦 Installing dependencies..." [runs npm install]
+
+❌ Bad: "Update your .env file with this value"
+✅ Good: "✅ Updated .env with your domain" [uses Edit tool]
+
+❌ Bad: "You need to install Node.js from nodejs.org"
+✅ Good: "📦 Installing Node.js via Homebrew..." [runs brew install]
+```
+
+**Be proactive, be helpful, do the work!**
 
 ## Key Documentation References
 
@@ -23,29 +93,298 @@ When working with this project, refer to these files in the cloned repository:
 - `CLAUDE.md` - Development guidelines and architecture
 - `AGENTFORCE_API_GUIDE.md` - Salesforce AgentForce API integration details
 
+## Prerequisites Check
+
+**BEFORE starting the setup, automatically check if the user has the required tools installed.**
+
+### Automatic Prerequisites Check
+
+**You should automatically check for and install missing dependencies:**
+
+1. **Check for Node.js** (version 18 or higher)
+   ```bash
+   node --version
+   ```
+   - If the command fails or version is < 18, Node.js needs to be installed
+
+2. **Check for Git**
+   ```bash
+   git --version
+   ```
+   - If the command fails, Git needs to be installed
+
+3. **Detect Operating System**
+   ```bash
+   uname -s  # For Mac/Linux
+   # Or check for Windows
+   ```
+
+### Installation Process (Do This Automatically)
+
+**If prerequisites are missing, ask the user for permission to install them, then proceed:**
+
+```
+I need to check if you have the required tools installed.
+
+Let me verify Node.js and Git...
+```
+
+#### For macOS Systems
+
+**If on macOS, check for Homebrew first, then install what's needed:**
+
+1. **Check for Homebrew:**
+   ```bash
+   which brew
+   ```
+
+2. **If Homebrew is NOT installed:**
+   ```
+   I notice Homebrew isn't installed. Homebrew is a package manager that will help us install Node.js and Git easily.
+
+   Can I install Homebrew for you? This will take about 2-3 minutes.
+   ```
+
+   **If user agrees, install Homebrew:**
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+   Note: The installation may prompt for the user's password. Tell them:
+   ```
+   📝 Note: The installation will ask for your Mac password. This is normal and safe!
+   Please enter your password when prompted.
+   ```
+
+3. **Install Node.js if missing:**
+   ```bash
+   brew install node
+   ```
+
+   Show progress:
+   ```
+   📦 Installing Node.js via Homebrew...
+   This will take 1-2 minutes.
+   ```
+
+4. **Install Git if missing:**
+   ```bash
+   brew install git
+   ```
+
+   Show progress:
+   ```
+   📦 Installing Git via Homebrew...
+   ```
+
+5. **Verify installations:**
+   ```bash
+   node --version && npm --version && git --version
+   ```
+
+   Show success message:
+   ```
+   ✅ All tools installed successfully!
+   - Node.js: v[version]
+   - npm: v[version]
+   - Git: v[version]
+
+   Ready to proceed with the portal setup!
+   ```
+
+#### For Windows Systems
+
+**For Windows users, you'll need to guide them to manual installation:**
+
+```
+I noticed you're on Windows. I need to install Node.js and Git for you.
+
+Unfortunately, I can't automatically install these on Windows, but I can guide you:
+
+For Node.js:
+1. I'll open this link for you: https://nodejs.org/en/download
+2. Download the "LTS" version for Windows (.msi)
+3. Run the installer and use default settings
+4. Once installed, come back here and let me know!
+
+For Git:
+1. I'll open this link for you: https://git-scm.com/download/win
+2. Download and run the installer
+3. Use default settings (just click Next through everything)
+4. Once installed, let me know!
+
+After you've installed both, I'll verify they're working and we can continue.
+```
+
+**After user confirms installation, verify:**
+```bash
+node --version && npm --version && git --version
+```
+
+#### For Linux Systems
+
+**If on Linux, use the system package manager:**
+
+```bash
+# Detect Linux distribution
+cat /etc/os-release
+```
+
+**For Ubuntu/Debian:**
+```bash
+sudo apt update
+sudo apt install -y nodejs npm git
+```
+
+**For Fedora/RHEL:**
+```bash
+sudo dnf install -y nodejs npm git
+```
+
+**For Arch:**
+```bash
+sudo pacman -S nodejs npm git
+```
+
+Show progress:
+```
+📦 Installing Node.js and Git via your system package manager...
+```
+
+**Verify installations:**
+```bash
+node --version && npm --version && git --version
+```
+
+### After All Prerequisites are Ready
+
+**Once all checks pass:**
+```
+✅ Perfect! All required tools are installed:
+✓ Node.js v[version]
+✓ npm v[version]
+✓ Git v[version]
+
+Now let's set up your AgentForce Portal!
+```
+
 ## Step-by-Step Setup Process
 
 ### Phase 1: Project Setup
 
-1. **Clone the Repository**
+**Automatically handle the project setup - do everything for the user:**
+
+1. **Use Current Working Directory**
+
+   **DO NOT ask where to install. Use the current directory where Claude Code is open.**
+
+   Check the current directory:
+   ```bash
+   pwd
+   ```
+
+   Inform the user:
+   ```
+   📁 I'll create your portal in the current directory:
+   [show current path]
+   ```
+
+   If the current directory seems unusual or is in a system folder, you can suggest:
+   ```
+   Note: Your portal will be created here. This looks good!
+   ```
+
+2. **Clone the Repository Automatically**
+
+   ```
+   📥 Cloning the AgentForce Portal repository...
+   ```
+
    ```bash
    git clone https://github.com/flemx/hr-agentforce-portal.git
    cd hr-agentforce-portal
    ```
 
-2. **Check for Port Conflicts**
-   - The app runs on port 8080
-   - If something is already running on this port, offer to kill it
-   - Command to check: `lsof -ti:8080 | xargs kill -9` (if needed)
+   Confirm success:
+   ```
+   ✅ Repository cloned successfully!
+   📂 Location: [show full path using pwd]
+   ```
 
-3. **Install Dependencies**
+3. **Check for Port Conflicts Automatically**
+
+   Check if port 8080 is in use:
+   ```bash
+   lsof -ti:8080
+   ```
+
+   If something is running:
+   ```
+   ⚠️ I found something already running on port 8080.
+
+   Should I stop it so we can use that port for your portal?
+   (I can restart it later if needed)
+   ```
+
+   If user agrees:
+   ```bash
+   lsof -ti:8080 | xargs kill -9
+   ```
+
+   ```
+   ✅ Port 8080 is now available!
+   ```
+
+4. **Install Dependencies Automatically**
+
+   ```
+   📦 Installing project dependencies...
+   This will take 1-2 minutes. Please wait...
+   ```
+
    ```bash
    npm install
    ```
 
-4. **Create Environment File**
-   - Copy `.env.example` to `.env`
-   - This will be populated with user-specific values in later steps
+   Show success:
+   ```
+   ✅ Dependencies installed successfully!
+   - Project is ready to customize
+   ```
+
+5. **Create Environment File Automatically**
+
+   ```
+   📝 Creating environment configuration file...
+   ```
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Verify and show status:
+   ```bash
+   ls -la .env
+   ```
+
+   ```
+   ✅ Environment file created!
+
+   This file (.env) will store your Salesforce connection details.
+   I'll help you fill it in during the next steps.
+   ```
+
+**After Phase 1 Completion:**
+```
+🎉 Project setup complete!
+
+✓ Repository cloned
+✓ Dependencies installed
+✓ Environment file created
+✓ Port 8080 available
+
+Next, let's personalize your landing page!
+```
 
 ### Phase 2: Personalization
 
@@ -102,11 +441,22 @@ How to find it:
 Please paste your domain URL here:
 ```
 
-**Update .env:**
+**After receiving the domain, automatically update .env:**
+
+Ensure the domain includes https://, then use the Edit tool to update .env:
+```bash
+# Find the line and update it
+# From: NEXT_PUBLIC_SALESFORCE_INSTANCE_URL=your-salesforce-instance-url
+# To: NEXT_PUBLIC_SALESFORCE_INSTANCE_URL=https://theircompany.my.salesforce.com
 ```
-NEXT_PUBLIC_SALESFORCE_INSTANCE_URL=<their-domain-url>
+
+Use the Edit tool to replace the value in the .env file.
+
+Confirm to user:
 ```
-- Make sure the domain includes https://
+✅ Updated Salesforce instance URL in .env
+🔗 Domain: [their-domain-url]
+```
 
 #### 3.2 Create Connected App
 
@@ -172,10 +522,24 @@ After saving:
 Please provide your Client ID and Client Secret:
 ```
 
-**After receiving credentials, update .env:**
+**After receiving credentials, automatically update .env:**
+
+Use the Edit tool to update both values in the .env file:
+```bash
+# Update Client ID
+# From: SALESFORCE_CLIENT_ID=your-salesforce-client-id-here
+# To: SALESFORCE_CLIENT_ID=[their-actual-client-id]
+
+# Update Client Secret
+# From: SALESFORCE_CLIENT_SECRET=your-salesforce-client-secret-here
+# To: SALESFORCE_CLIENT_SECRET=[their-actual-client-secret]
 ```
-SALESFORCE_CLIENT_ID=<their-client-id>
-SALESFORCE_CLIENT_SECRET=<their-client-secret>
+
+Confirm to user:
+```
+✅ Updated Salesforce credentials in .env
+🔑 Client ID: [first 10 chars]...
+🔐 Client Secret: [first 5 chars]...
 ```
 
 #### 3.3 Configure Connected App Policies
@@ -240,6 +604,7 @@ you'll need to come back and add the deployed URL here too.
 
 #### 3.6 Set Authentication Password (Optional)
 
+Ask the user:
 ```
 🔐 Step 6: Set Portal Password (Optional)
 
@@ -247,29 +612,54 @@ The portal is password-protected by default.
 
 Default password: "your-secure-password-here"
 
-To change it, update both of these in .env:
+Would you like to:
+1. Keep the default password
+2. Set a custom password
+
+If you choose custom, what password would you like?
 ```
 
-**Update .env if they want to change:**
-```
-NEXT_PUBLIC_AUTH_PASSWORD=<their-new-password>
-AUTH_PASSWORD=<their-new-password>
+**If they want a custom password, automatically update .env:**
+
+Use the Edit tool to update both password fields and generate a JWT secret:
+```bash
+# Generate a random JWT secret
+# You can use: openssl rand -base64 32 or similar
+
+# Update both password fields in .env
+# NEXT_PUBLIC_AUTH_PASSWORD=[their-new-password]
+# AUTH_PASSWORD=[their-new-password]
+# JWT_SECRET=[generated-random-string]
 ```
 
-Also update the JWT secret:
+Confirm to user:
 ```
-JWT_SECRET=<generate-random-string>
+✅ Updated portal password in .env
+🔒 New password: [their-password]
+🔑 JWT secret: Generated and saved
+
+Remember this password - you'll need it to log into the portal!
 ```
 
 ### Phase 4: Start Development Server
 
-After all configuration is complete:
+**After all configuration is complete, automatically start the dev server:**
+
+```
+🚀 Starting your AgentForce Portal...
+```
 
 ```bash
 npm run dev
 ```
 
-**Show the user a nice success message:**
+Note: Use the Bash tool with `run_in_background: true` so the server runs in the background and the user can continue to interact.
+
+Monitor the output to confirm the server started successfully. Look for messages like:
+- "Ready" or "started server on"
+- The local URL (should be http://localhost:8080)
+
+**Once server is running, show the user a nice success message:**
 ```
 🎉 Success! Your AgentForce Portal is running!
 
@@ -326,7 +716,89 @@ Would you like me to proceed with deployment?
 - Use `mcp__heroku__deploy_to_heroku` tool to deploy
 - Guide them to update CORS settings with the new URL
 
+## Automation Summary
+
+**You should automatically handle these tasks without user intervention:**
+
+✅ **Prerequisites**
+- Check for Node.js and Git
+- Install via Homebrew (Mac) or system package manager (Linux)
+- Guide Windows users to download and install
+
+✅ **Project Setup**
+- Use current working directory (no questions asked)
+- Clone the repository
+- Navigate to project directory
+- Install npm dependencies
+- Create .env file
+- Check and free port 8080 if needed
+
+✅ **Configuration**
+- Update Salesforce instance URL in .env
+- Update Client ID and Secret in .env
+- Generate and set JWT secret
+- Update password fields if custom password chosen
+
+✅ **Start Server**
+- Run npm run dev in background
+- Monitor for successful start
+- Provide user with access URL
+
+**What requires user input:**
+- Providing Salesforce org domain
+- Creating Connected App in Salesforce (manual in SF UI)
+- Providing Client ID and Secret
+- Configuring Connected App policies (manual in SF UI)
+- Connecting agents (manual in SF UI)
+- Adding CORS entry (manual in SF UI)
+- Choosing custom password (optional)
+- Customization preferences for landing page
+
+**Key principle: Automate everything you can, only ask for what you must.**
+
 ## Troubleshooting Guide
+
+### Prerequisites Issues
+
+**Issue 0: Command Not Found Errors**
+
+If the user sees `command not found: node` or `command not found: git`:
+```
+❌ Command Not Found
+
+This means Node.js or Git isn't installed (or Terminal needs to be restarted).
+
+Steps to fix:
+1. Close Terminal completely
+2. Reopen Terminal
+3. Try the command again: node --version
+
+If it still doesn't work:
+- Reinstall Node.js or Git following the Prerequisites section above
+- Make sure you completed the installation fully
+- Mac users: If you installed with Homebrew, run: brew doctor
+```
+
+**Homebrew Installation Issues:**
+```
+If Homebrew installation hangs or fails:
+- Make sure you have a stable internet connection
+- Try running the install command again
+- You may need to enter your Mac password when prompted
+- Check Xcode Command Line Tools are installed:
+  xcode-select --install
+```
+
+**Node.js Version Issues:**
+```
+If node --version shows a version lower than 18:
+
+Update Node.js:
+# With Homebrew
+brew upgrade node
+
+# Or download latest from nodejs.org
+```
 
 ### Common Issues
 
