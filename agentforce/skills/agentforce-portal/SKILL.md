@@ -443,6 +443,7 @@ Please share:
 **After receiving their input:**
 - Modify the landing page components (primarily in `src/app/page.tsx` or similar)
 - Update text, descriptions, and any visual elements to match their use case
+-  Make sure to update opn the main landing page the: Hero, change the Workshop Highlights with a new title and content based on requirememnts, update the Presentation of September 16, 2025 section if they want to offer a download, otherwise leave this section out
 - Update the logo if this is shared:
     - search for references on:  nto-primary-logo-04.png and nto-primary-logo-01.png and update with the new logo url you found, from a public url or locally in the poroject dir
 - Ensure to update the bradning and company names etc on all pages and remove the NTO / HR references: landing page (root: /), login page (/login), agent portal (/agents)
