@@ -1,6 +1,6 @@
 {
 "name": "agentforce",
-"description": "A simple greeting plugin to learn the basics",
+"description": "AgentForce plugin for Salesforce to create a personalized demo portal for showcasing AgentForce AI agents.",
 "version": "1.0.0",
 "author": {
 "name": "Damien Fleminks"
