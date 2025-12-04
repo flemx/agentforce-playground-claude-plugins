@@ -374,6 +374,34 @@ Now let's set up your AgentForce Portal!
    I'll help you fill it in during the next steps.
    ```
 
+6. **Start Development Server Immediately**
+
+   ```
+   🚀 Starting your AgentForce Portal...
+
+   You can start testing the portal right away while we customize it!
+   ```
+
+   ```bash
+   npm run dev
+   ```
+
+   Note: Use the Bash tool with `run_in_background: true` so the server runs in the background and the user can continue to interact.
+
+   Monitor the output to confirm the server started successfully. Look for messages like:
+   - "Ready" or "started server on"
+   - The local URL (should be http://localhost:8080)
+
+   **Once server is running, show the user immediate access:**
+   ```
+   ✅ Portal is now running!
+
+   🌐 Open in browser: http://localhost:8080
+   🔐 Login password: your-secure-password-here
+
+   The portal is live with default settings. You can explore it now while we personalize it together!
+   ```
+
 **After Phase 1 Completion:**
 ```
 🎉 Project setup complete!
@@ -382,6 +410,10 @@ Now let's set up your AgentForce Portal!
 ✓ Dependencies installed
 ✓ Environment file created
 ✓ Port 8080 available
+✓ Development server running
+
+🌐 Your portal: http://localhost:8080
+🔐 Password: your-secure-password-here
 
 Next, let's personalize your landing page!
 ```
@@ -411,11 +443,10 @@ Please share:
 **After receiving their input:**
 - Modify the landing page components (primarily in `src/app/page.tsx` or similar)
 - Update text, descriptions, and any visual elements to match their use case
-- Update the logo under: public/uploads
-    - public/uploads/nto-primary-logo-01.png
-    - public/uploads/nto-primary-logo-04.png
-    - Keep it the same name ton update the logo's automatically, or updater the references in the code
-- Keep the AgentForce integration intact
+- Update the logo if this is shared:
+    - search for references on:  nto-primary-logo-04.png and nto-primary-logo-01.png and update with the new logo url you found, from a public url or locally in the poroject dir
+- Ensure to update the bradning and company names etc on all pages and remove the NTO / HR references: landing page (root: /), login page (/login), agent portal (/agents)
+=- Keep the AgentForce integration intact
 - Ensure the customization feels personal and professional
 
 ### Phase 3: Salesforce Integration
@@ -632,40 +663,54 @@ Use the Edit tool to update both password fields and generate a JWT secret:
 # JWT_SECRET=[generated-random-string]
 ```
 
-Confirm to user:
+Confirm to user and remind about server restart:
 ```
 ✅ Updated portal password in .env
 🔒 New password: [their-password]
 🔑 JWT secret: Generated and saved
 
 Remember this password - you'll need it to log into the portal!
+
+🔄 Restarting the development server to apply changes...
 ```
 
-### Phase 4: Start Development Server
+**Restart the dev server to apply the new password:**
 
-**After all configuration is complete, automatically start the dev server:**
-
-```
-🚀 Starting your AgentForce Portal...
-```
-
+Kill the existing server process and restart:
 ```bash
+# Kill the existing dev server
+lsof -ti:8080 | xargs kill -9
+
+# Start the dev server again
 npm run dev
 ```
 
-Note: Use the Bash tool with `run_in_background: true` so the server runs in the background and the user can continue to interact.
+Note: Use the Bash tool with `run_in_background: true` so the server runs in the background.
 
-Monitor the output to confirm the server started successfully. Look for messages like:
-- "Ready" or "started server on"
-- The local URL (should be http://localhost:8080)
-
-**Once server is running, show the user a nice success message:**
+**Confirm the restart:**
 ```
-🎉 Success! Your AgentForce Portal is running!
+✅ Server restarted with new password!
 
-🌐 Open in browser: http://localhost:8080
+🌐 Portal: http://localhost:8080
+🔐 New password: [their-password]
+```
 
-📝 Login with password: <their-password>
+### Phase 4: Final Configuration Complete
+
+**After all Salesforce configuration is complete, show the user a success message:**
+
+```
+🎉 Success! Your AgentForce Portal is fully configured!
+
+🌐 Portal URL: http://localhost:8080
+🔐 Login password: <their-password>
+
+✅ What's configured:
+✓ Customized landing page
+✓ Salesforce org connected
+✓ AgentForce agents linked
+✓ CORS enabled
+✓ Authentication secured
 
 From here you can:
 ✓ View your customized landing page
@@ -673,14 +718,16 @@ From here you can:
 ✓ Chat with your AI agents
 ✓ Demo your solution to customers
 
-💡 If the site doesn't load:
+💡 If the site doesn't load properly:
 - Check that no errors appeared in the terminal
-- Ensure all environment variables are set correctly
-- Try running: npm run dev
+- Ensure all environment variables are set correctly in .env
+- Verify your Salesforce Connected App settings
+- Check CORS is configured for http://localhost:8080
 
 Need to make changes? Ask me and I can help modify:
 - Landing page content and styling
 - Agent display and interactions
+- Environment variables
 - Any custom features you need
 
 📚 For development guidance, see:

@@ -23,6 +23,21 @@ Learn more about plugin marketplaces in the [official documentation](https://cod
 
 ---
 
+## ⚡ Quick Start
+
+**Want to jump right in?**
+
+1. Open Claude Code in VSCode
+2. Run: `/plugin marketplace add https://github.com/flemx/agentforce-playground-claude-plugins.git`
+3. Run: `/plugin` → Browse and install plugins → Select **"agentforce"**
+4. Say: `Create an AgentForce portal`
+
+That's it! Claude Code will set up everything automatically. 🎉
+
+[See detailed installation instructions below](#-getting-started)
+
+---
+
 ## 🎪 What's Inside
 
 ### Current Plugins
@@ -51,30 +66,72 @@ A comprehensive plugin for Salesforce AgentForce development and demonstrations.
 
 ### Prerequisites
 
-- [Claude Code](https://code.claude.com) installed
+- [Claude Code](https://code.claude.com) installed (VSCode extension)
 - [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) (for Salesforce DX MCP)
 - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) (for Heroku deployments)
 
 ### Installation
 
-#### Option 1: Clone This Marketplace
+Follow these three simple steps to get started:
 
-```bash
-git clone https://github.com/your-org/agentforce-playground.git
-cd agentforce-playground
+```
+1️⃣ Add Marketplace  →  2️⃣ Install Plugin  →  3️⃣ Use Skills
 ```
 
-Then add this marketplace to your Claude Code settings.
+#### Step 1: Add the Marketplace
 
-#### Option 2: Add Individual Plugins
+Open Claude Code in VSCode and add this marketplace:
 
-Navigate to the plugin you want:
-
-```bash
-cd agentforce
+```
+/plugin marketplace add https://github.com/flemx/agentforce-playground-claude-plugins.git
 ```
 
-And follow the plugin-specific installation instructions.
+This connects Claude Code to this plugin marketplace, making all plugins available for installation.
+
+#### Step 2: Install the AgentForce Plugin
+
+Browse and install the plugin:
+
+```
+/plugin
+```
+
+Then:
+1. Select **"Browse and install plugins"**
+2. Find **"agentforce"** in the list
+3. Click to install
+
+#### Step 3: Start Using It!
+
+Once installed, you can immediately start using the skills:
+
+```
+Create an AgentForce portal
+```
+
+Or invoke the skill directly:
+
+```
+Use the agentforce-portal skill to set up my demo
+```
+
+Claude Code will automatically handle the setup, from checking dependencies to launching your portal! 🚀
+
+### What Gets Installed
+
+When you install the AgentForce plugin, you get:
+
+✅ **Skills:**
+- `agentforce-portal` — Automated portal setup
+
+✅ **MCP Servers:**
+- Heroku MCP — Deploy to Heroku
+- Salesforce DX MCP — Salesforce development tools
+
+✅ **Ready to Use:**
+- No additional configuration needed
+- Skills are immediately available
+- MCP servers auto-configured
 
 ---
 
@@ -94,9 +151,20 @@ The `agentforce-portal` skill automates the entire process of setting up a perso
 
 **Usage:**
 
+In Claude Code, simply ask:
+
 ```
-# In Claude Code, invoke the skill:
+Create an AgentForce portal
+```
+
+Or be more specific:
+
+```
 Use the agentforce-portal skill to set up my demo
+```
+
+```
+I need to set up a customer demo portal for AgentForce
 ```
 
 **Features:**
@@ -136,8 +204,6 @@ Comprehensive Salesforce development toolkit.
 - **Data** — Import/export data
 - **Users** — Manage users and permissions
 
-**Special tools:**
-- `run_apex_test` — Execute Apex tests from Claude Code
 
 ---
 
@@ -153,7 +219,6 @@ Comprehensive Salesforce development toolkit.
 
 - **Local Development** — Full Salesforce DX integration
 - **Deployment Automation** — One-command Heroku deployments
-- **Testing** — Run Apex tests without leaving your editor
 
 ### For Teams
 
@@ -243,13 +308,6 @@ This is an experimental playground! Contributions, ideas, and feedback are welco
 
 **Damien Fleminks**
 
----
-
-## 🙏 Acknowledgments
-
-- Built for the Salesforce Solution Engineering community
-- Powered by [Claude Code](https://code.claude.com)
-- Inspired by the potential of AgentForce AI
 
 ---
 
@@ -263,15 +321,5 @@ Found a bug or have a feature request?
 
 ---
 
-## 🔮 Roadmap
-
-- [ ] Add more AgentForce integration patterns
-- [ ] Create skills for common Salesforce workflows
-- [ ] Build agent conversation testing tools
-- [ ] Add support for Salesforce sandbox management
-- [ ] Create templates for custom agent types
-- [ ] Integrate with Salesforce Analytics
-
----
 
 **Happy building with AgentForce! 🚀**
