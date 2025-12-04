@@ -1,0 +1,13 @@
+{
+"name": "agentforce-playground",
+"owner": {
+"name": "Test User"
+},
+"plugins": [
+{
+  "name": "agentforce",
+  "source": "./agentforce",
+  "description": "AgentForce plugin"
+}
+]
+}
